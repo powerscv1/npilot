@@ -46,15 +46,16 @@ ACADOS_SOLVER_TYPE = 'SQP_RTI'
 
 
 CRUISE_GAP_BP = [1., 2., 3., 4.]
-CRUISE_GAP_V = [1.1, 1.3, 1.58, 2.10]
+CRUISE_GAP_V = [0.6, 1.1, 1.65, 2.2]
 
-AUTO_TR_BP = [0., 30.*CV.KPH_TO_MS, 70.*CV.KPH_TO_MS, 110.*CV.KPH_TO_MS]
+#AUTO_TR_BP = [0., 30.*CV.KPH_TO_MS, 70.*CV.KPH_TO_MS, 110.*CV.KPH_TO_MS]
 #AUTO_TR_V = [1.0, 1.2, 1.33, 1.45]
-AUTO_TR_V = [1.2, 1.3, 1.4, 1.5]
+AUTO_TR_BP = [0., 15.*CV.KPH_TO_MS, 20.*CV.KPH_TO_MS, 60.*CV.KPH_TO_MS, 80.*CV.KPH_TO_MS, 110.*CV.KPH_TO_MS]
+AUTO_TR_V = [0.8, 1.0 , 1.1, 1.35, 1.55, 2.0]
+#AUTO_TR_V=[  0,   15,   20,   60,  80, 110]
 
-AUTO_TR_CRUISE_GAP = 4
+AUTO_TR_CRUISE_GAP = 3
 DIFF_RADAR_VISION = 1.5
-
 
 # Fewer timestamps don't hurt performance and lead to
 # much better convergence of the MPC with low iterations

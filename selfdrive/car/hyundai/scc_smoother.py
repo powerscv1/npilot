@@ -20,7 +20,7 @@ from selfdrive.road_speed_limiter import road_speed_limiter_get_max_speed, road_
 TRAJECTORY_SIZE = 33
 
 SYNC_MARGIN = 3.
-CREEP_SPEED = 2.3
+CREEP_SPEED = 2.0 #2.3
 
 # do not modify
 MIN_SET_SPEED_KPH = V_CRUISE_MIN
@@ -389,7 +389,7 @@ class SccSmoother:
 
     start_boost = interp(CS.out.vEgo, [CREEP_SPEED, 2 * CREEP_SPEED], [boost_v, 0.0])
     is_accelerating = interp(accel, [0.0, 0.2], [0.0, 1.0])
-    boost = start_boost * is_accelerating
+    boost = start_boost * is_accelerating * 0.4
 
     accel += boost
 

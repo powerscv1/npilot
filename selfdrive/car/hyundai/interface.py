@@ -27,9 +27,10 @@ class CarInterface(CarInterfaceBase):
 
     v_current_kph = current_speed * CV.MS_TO_KPH
 
-    gas_max_bp = [10., 20., 50., 70., 130., 150.]
-    gas_max_v = [1.5, 1.23, 0.67, 0.47, 0.16, 0.1]
-
+   # gas_max_bp = [10., 20., 50., 70., 130., 150.]
+   # gas_max_v = [1.5, 1.23, 0.67, 0.47, 0.16, 0.1]
+    gas_max_bp = [0., 3., 5., 20., 50., 70., 130., 150.]
+    gas_max_v = [0.4,1.4,1.8, 1.5, 0.9, 0.47, 0.16, 0.1]
     return CarControllerParams.ACCEL_MIN, interp(v_current_kph, gas_max_bp, gas_max_v)
 
   @staticmethod
@@ -76,7 +77,7 @@ class CarInterface(CarInterfaceBase):
     else:
       ret.lateralTuning.init('torque')
 
-    ret.steerRatio = 16.5
+    ret.steerRatio = 14.5
 
     ret.steerActuatorDelay = 0.1  # Default delay
     ret.steerLimitTimer = 0.4 # Default
@@ -90,8 +91,10 @@ class CarInterface(CarInterfaceBase):
       ret.steerLimitTimer = float(Decimal(params.get("SteerLimitTimerAdj", encoding="utf8")) * Decimal('0.01'))
 
     # longitudinal
-    ret.longitudinalTuning.kpBP = [0., 5.*CV.KPH_TO_MS, 10.*CV.KPH_TO_MS, 30.*CV.KPH_TO_MS, 130.*CV.KPH_TO_MS]
-    ret.longitudinalTuning.kpV = [1.25, 1.1, 1.0, 0.93, 0.52]
+    #ret.longitudinalTuning.kpBP = [0., 5.*CV.KPH_TO_MS, 10.*CV.KPH_TO_MS, 30.*CV.KPH_TO_MS, 130.*CV.KPH_TO_MS]
+    #ret.longitudinalTuning.kpV = [1.25, 1.1, 1.0, 0.93, 0.52]
+    ret.longitudinalTuning.kpBP = [0., 3.*CV.KPH_TO_MS, 5.*CV.KPH_TO_MS, 10.*CV.KPH_TO_MS, 25.*CV.KPH_TO_MS, 130.*CV.KPH_TO_MS]
+    ret.longitudinalTuning.kpV = [0.3, 0.75, 0.9, 1.2, 0.93, 0.52]
     ret.longitudinalTuning.kiBP = [0., 130. * CV.KPH_TO_MS]
     ret.longitudinalTuning.kiV = [0.1, 0.05]
     ret.longitudinalActuatorDelayLowerBound = 0.3
@@ -211,12 +214,12 @@ class CarInterface(CarInterfaceBase):
       tire_stiffness_factor = 0.385
       ret.centerToFront = ret.wheelbase * 0.4
       ret.steerRatio = 13.73
-    elif candidate in [CAR.GRANDEUR_IG, CAR.GRANDEUR_IG_HEV]:
+    elif candidate in [CAR.GRANDEUR_IG_HEV_2018, CAR.GRANDEUR_IG, CAR.GRANDEUR_IG_HEV]:
       tire_stiffness_factor = 0.8
-      ret.mass = 1570. + STD_CARGO_KG
+      ret.mass = 1640. + STD_CARGO_KG
       ret.wheelbase = 2.845
       ret.centerToFront = ret.wheelbase * 0.385
-      ret.steerRatio = 16.
+      ret.steerRatio = 14.
     elif candidate in [CAR.GRANDEUR_IG_FL, CAR.GRANDEUR_IG_FL_HEV]:
       tire_stiffness_factor = 0.8
       ret.mass = 1600. + STD_CARGO_KG
