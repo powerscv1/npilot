@@ -197,7 +197,7 @@ class CarInterfaceBase(ABC):
 
 
     # janpoo6427
-    if cs_out.gearShifter != GearShifter.park:
+    #if cs_out.gearShifter != GearShifter.park:
       #if cs_out.doorOpen:
       #  events.add(EventName.doorOpen)
       #if cs_out.seatbeltUnlatched:
