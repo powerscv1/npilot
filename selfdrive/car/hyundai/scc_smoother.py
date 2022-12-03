@@ -20,7 +20,7 @@ from selfdrive.road_speed_limiter import road_speed_limiter_get_max_speed, road_
 TRAJECTORY_SIZE = 33
 
 SYNC_MARGIN = 3.
-CREEP_SPEED = 2.0 #2.3
+CREEP_SPEED = 2.3 #2.3
 
 # do not modify
 MIN_SET_SPEED_KPH = V_CRUISE_MIN
@@ -160,7 +160,10 @@ class SccSmoother:
 
     max_speed_log = ""
 
-    if apply_limit_speed >= self.kph_to_clu(10):
+    ascc_enabled = CS.acc_mode and CS.cruiseState_enabled \
+                   and 1 < CS.cruiseState_speed < 255 and not CS.brake_pressed
+    
+    if apply_limit_speed >= self.kph_to_clu(10) and ascc_enabled:
 
       if first_started:
         self.max_speed_clu = clu11_speed
@@ -389,7 +392,7 @@ class SccSmoother:
 
     start_boost = interp(CS.out.vEgo, [CREEP_SPEED, 2 * CREEP_SPEED], [boost_v, 0.0])
     is_accelerating = interp(accel, [0.0, 0.2], [0.0, 1.0])
-    boost = start_boost * is_accelerating * 0.4
+    boost = start_boost * is_accelerating * 0.2
 
     accel += boost
 
