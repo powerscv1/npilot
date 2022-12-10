@@ -192,7 +192,7 @@ class SccSmoother:
         max_speed_clu = min(max_speed_clu, lead_speed)
 
         if not self.limited_lead:
-          self.max_speed_clu = clu11_speed + 3.
+          self.max_speed_clu = clu11_speed - 2. #+ 3.
           self.limited_lead = True
     else:
       self.limited_lead = False
@@ -392,7 +392,7 @@ class SccSmoother:
 
     start_boost = interp(CS.out.vEgo, [CREEP_SPEED, 2 * CREEP_SPEED], [boost_v, 0.0])
     is_accelerating = interp(accel, [0.0, 0.2], [0.0, 1.0])
-    boost = start_boost * is_accelerating * 0.2
+    boost = start_boost * is_accelerating * 0.3
 
     accel += boost
 
