@@ -1,11 +1,11 @@
 const int HYUNDAI_MAX_STEER = 409;             // like stock
 const int HYUNDAI_MAX_RT_DELTA = 112;          // max delta torque allowed for real time checks
 const uint32_t HYUNDAI_RT_INTERVAL = 250000;   // 250ms between real time checks
-const int HYUNDAI_MAX_RATE_UP = 5;
+const int HYUNDAI_MAX_RATE_UP = 6;  //base 5
 const int HYUNDAI_MAX_RATE_DOWN = 7;
 const int HYUNDAI_DRIVER_TORQUE_ALLOWANCE = 50;
 const int HYUNDAI_DRIVER_TORQUE_FACTOR = 2;
-const int HYUNDAI_STANDSTILL_THRSLD = 10;  // ~1kph
+const int HYUNDAI_STANDSTILL_THRSLD = 10;  // ~1kph base 30
 
 const int HYUNDAI_MAX_ACCEL = 250;  // 1/100 m/s2
 const int HYUNDAI_MIN_ACCEL = -400; // 1/100 m/s2
