@@ -52,7 +52,7 @@ class CarInterface(CarInterfaceBase):
     ret.maxSteeringAngleDeg = 1000.
 
     ret.steerFaultMaxAngle = 84 #85
-    ret.steerFaultMaxFrames = 85 #90
+    ret.steerFaultMaxFrames = 89 #90
 
     ret.disableLateralLiveTuning = False
 
@@ -225,7 +225,7 @@ class CarInterface(CarInterfaceBase):
       ret.mass = 1675. + STD_CARGO_KG
       ret.wheelbase = 2.845
       ret.centerToFront = ret.wheelbase * 0.385
-      ret.steerRatio = 14.
+      ret.steerRatio = 15.5
     elif candidate in [CAR.GRANDEUR_IG_FL, CAR.GRANDEUR_IG_FL_HEV]:
       tire_stiffness_factor = 0.8
       ret.mass = 1600. + STD_CARGO_KG
