@@ -242,7 +242,7 @@ class SccSmoother:
 
     # janpoo6427
     if Params().get_bool("UseNpilotManager"):
-      ascc_auto_set = ntune_option_enabled('autoCruiseSet') and enabled and (clu11_speed > 20) \
+      ascc_auto_set = ntune_option_enabled('autoCruiseSet') and enabled and (clu11_speed > 10) \
                   and CS.gas_pressed and CS.prev_cruiseState_speed and not CS.cruiseState_speed \
                   and (activated_hda if ntune_option_enabled('autoCruiseSetDependsOnNda') else True)
 
@@ -251,7 +251,7 @@ class SccSmoother:
       #             and (activated_hda if ntune_option_enabled('autoCruiseSetDependsOnNda') else True)
   
     else:
-      ascc_auto_set = Params().get_bool("AutoCruiseSet") and enabled and (clu11_speed > 20) \
+      ascc_auto_set = Params().get_bool("AutoCruiseSet") and enabled and (clu11_speed > 10) \
                   and CS.gas_pressed and CS.prev_cruiseState_speed and not CS.cruiseState_speed \
                   and (activated_hda if Params().get_bool("AutoCruiseSetDependsOnNda") else True)      
 
